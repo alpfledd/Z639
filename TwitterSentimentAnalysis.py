@@ -65,7 +65,7 @@ def main ():
           print("Tweet: " + tweet['text'])
 
     print("\n\nNegative tweets:")
-    for tweet in ntweets[:20]:
+    for tweet in ntweets[:40]:
         print("Tweet: " + tweet['text'])
         
 if __name__ == "__main__":
