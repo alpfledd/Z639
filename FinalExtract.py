@@ -63,17 +63,16 @@ def extract_tweet_attributes(tweet_object):
                           'retweets':retweets,
                          'favorites':favorites})
     # create dataframe   
-    df = pd.DataFrame(tweet_list, columns=['tweet_id',
-                                           'created_at',
+    df = pd.DataFrame(tweet_list, columns=['created_at',
                                            'source',
                                            'retweets',
                                            'favorites'])
-    #with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-        #print(tabulate(df, headers='keys', tablefmt='psql'))
-    writer = pd.ExcelWriter('TwitterData.xlsx')
-    df.to_excel(writer,'MBB')
-    writer.save()
-    print('DataFrame is written successfully to Excel File.')
+    with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+##    writer = pd.ExcelWriter('TwitterData.xlsx')
+##    df.to_excel(writer,'MBB')
+##    writer.save()
+##    print('DataFrame is written successfully to Excel File.')
     
 extract_tweet_attributes(indiana_tweets)
 
