@@ -1,0 +1,59 @@
+import tweepy
+# Variables that contains the credentials to access Twitter API
+ACCESS_TOKEN = '192754590-Ypri2v6C576aKdRnTLrSXAUev4f7Ue1RY9bs7GWH'
+ACCESS_SECRET = 'aeJzdAd1CoN0WYKNxH3x8xmCgfVRXIXXYS2LWzN3Zk0Sd'
+CONSUMER_KEY = 'dxcK2lyxZeT0b1YGRAj6KesG3'
+CONSUMER_SECRET = 'WIOc3N07WSjnd6QVYlAclYmYXBl1YQiOez8adevWUDcbSBlnM7'
+
+
+# Setup access to API
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
+
+api = tweepy.API(auth)
+
+# Task 2: Retrieve (and print out) the latest 25 statuses of any user's tmeline. E.g. BBC World
+# (Use: https://tweeterid.com/  to convert usernames and twitter IDs)
+# (Tweet Object atribute list: https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/tweet-object)
+
+'''results = api.user_timeline(user_id = 63017007, count=25)
+# Print out the results
+counter = 0
+for result in results:
+	counter += 1
+	print(str(counter) + ". " + result.text)
+
+'''
+# Task 3: Get the IDs of those who have retweeted a specific tweet:
+'''retweeters = api.retweeters(id=1246093562845986816)
+# Print out the results
+counter = 0
+for retweeter in retweeters:
+	counter += 1
+	print(str(counter) + ". " + str(retweeter))
+'''
+
+# Task 4: Get a specific user's information:
+# (User Object attribute list: https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/user-object)
+
+user = api.get_user(user_id=43557484)
+print("Name: " + user.name)
+print("Screen Name: " + user.screen_name)
+print("Location: " + user.location)
+print("Description: " + user.description)
+print("Protected: " + str(user.protected))
+print("Friends: " + str(user.friends_count))
+print("Followers: " + str(user.followers_count))
+
+
+# Task 5: Return a collection of relevant Tweets matching a specified query.
+#(How to compose more complex queries: https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators)
+
+##tweets = api.search(q="#Hoosiers #IU", count=200, result_type="recent", lang="en", tweet_mode="extended")
+##counter = 0
+##for tweet in tweets:
+##	counter += 1
+##	print(str(counter) + ". " + tweet.full_text)
+
+
+
